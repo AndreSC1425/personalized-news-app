@@ -1,0 +1,30 @@
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <h2 class="text-center mb-4">Choose Your Interests</h2>
+
+    <form (ngSubmit)="onSubmit()">
+      <div *ngFor="let topic of topics" class="form-check mb-2">
+        <!--
+          #cb creates a local template reference to this input element.
+          That lets us read cb.checked directly (a boolean), avoiding TS errors.
+        -->
+        <input
+          #cb
+          type="checkbox"
+          class="form-check-input"
+          [id]="topic"
+          (change)="toggleTopic(topic, cb.checked)"
+        />
+        <label class="form-check-label" [for]="topic">{{ topic }}</label>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary mt-3 w-100"
+        [disabled]="selectedTopics.length === 0"
+      >
+        Continue
+      </button>
+    </form>
+  </div>
+</div>

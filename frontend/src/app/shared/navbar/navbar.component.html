@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">NewsApp</a>
+
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item" *ngIf="isLoggedIn()">
+        <a class="nav-link" routerLink="/feed">Feed</a>
+      </li>
+
+
+      
+      <li class="nav-item" *ngIf="isLoggedIn()">
+        <a class="nav-link" routerLink="/bookmarks">Bookmarks</a>
+      </li>
+     
+      <li class="nav-item" *ngIf="isLoggedIn()">
+  <a class="nav-link" (click)="resetPreferences()" style="cursor: pointer;">Change Interests</a>
+</li>
+        <li class="nav-item" *ngIf="isLoggedIn()">
+        <a class="nav-link" routerLink="/profile">Profile</a>
+        </li>
+
+      <li class="nav-item" *ngIf="isLoggedIn()">
+        <a class="nav-link" (click)="logout()" style="cursor: pointer;">Logout</a>
+      </li>
+
+      <li class="nav-item" *ngIf="!isLoggedIn()">
+        <a class="nav-link" routerLink="/login">Login</a>
+      </li>
+    </ul>
+  </div>
+</nav>

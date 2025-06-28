@@ -1,0 +1,14 @@
+<div *ngIf="loading" class="text-center mt-5">Loading news…</div>
+
+<div *ngIf="!loading && articles.length === 0" class="text-center mt-5">
+  No articles found for your topics.
+</div>
+
+<div *ngIf="!loading && articles.length" class="row">
+  <div
+    *ngFor="let article of articles"
+    class="col-md-4 mb-4"
+  >
+    <app-news-card [article]="article"></app-news-card>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Your Bookmarked Articles</h2>
+
+  <div *ngIf="!bookmarks.length" class="alert alert-info text-center">
+    You haven’t bookmarked any articles yet.
+  </div>
+
+  <div *ngFor="let article of bookmarks">
+    <app-news-card
+      [article]="article"
+      [showRemoveButton]="true"
+      (remove)="removeBookmark($event)"
+    ></app-news-card>
+  </div>
+</div>
+<!-- This component displays the user's bookmarked articles and allows them to remove bookmarks. -->
+<!-- It uses the NewsCard component to display each article and handles the removal of bookmarks. -->
