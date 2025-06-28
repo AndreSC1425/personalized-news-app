@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Article } from '../../services/news.service';
 import { BookmarkService } from '../../services/bookmark.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-news-card',
@@ -12,10 +13,36 @@ import { BookmarkService } from '../../services/bookmark.service';
 })
 export class NewsCardComponent {
   @Input() article!: Article;
+
+  summarizedText: string | null = null;
+  loadingSummary = false;
+  
   @Input() showRemoveButton: boolean = false;
   @Output() remove = new EventEmitter<Article>();
 
-  constructor(private bookmarkService: BookmarkService) { }
+  constructor(
+  private bookmarkService: BookmarkService,
+  private http: HttpClient
+) {}
+
+  summarizeArticle(): void {
+  const textToSend = this.article.description || this.article.title;
+
+  this.loadingSummary = true;
+  this.http
+    .post('http://localhost:8080/api/ai/summarize', textToSend, { responseType: 'text' })
+    .subscribe({
+      next: (summary) => {
+        this.summarizedText = summary;
+        this.loadingSummary = false;
+      },
+      error: (err) => {
+        console.error('AI summary failed:', err);
+        this.loadingSummary = false;
+      }
+    });
+}
+  // This method sends the article content to the AI service for summarization.
 
   bookmarkArticle(): void {
     this.bookmarkService.addBookmark(this.article).subscribe({

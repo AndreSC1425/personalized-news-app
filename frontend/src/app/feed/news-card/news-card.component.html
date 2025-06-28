@@ -6,6 +6,18 @@
     <a class="btn btn-sm btn-outline-primary" href="{{ article.url }}" target="_blank">Read more</a>
 
     <button
+      class="btn btn-outline-secondary btn-sm mt-2"
+      (click)="summarizeArticle()"
+      [disabled]="loadingSummary"
+    >
+      {{ loadingSummary ? 'Summarizing...' : 'Summarize' }}
+    </button>
+
+    <div *ngIf="summarizedText" class="alert alert-light mt-2">
+      <strong>AI Summary:</strong> {{ summarizedText }}
+    </div>
+
+    <button
       *ngIf="!showRemoveButton"
       class="btn btn-sm btn-outline-success float-end"
       (click)="bookmarkArticle()"
