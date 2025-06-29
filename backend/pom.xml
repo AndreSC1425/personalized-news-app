@@ -6,7 +6,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.5.3</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 	<groupId>com.newsapp</groupId>
 	<artifactId>newsbackend</artifactId>
@@ -52,7 +52,7 @@
 <!--		</repository>-->
 <!--	</repositories>-->
 
-	<dependencyManagement>
+<!-- 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>org.springframework.ai</groupId>
@@ -62,7 +62,7 @@
 				<scope>import</scope>
 			</dependency>
 		</dependencies>
-	</dependencyManagement>
+	</dependencyManagement> -->
 
 	<dependencies>
 		<!-- API dependency -->
