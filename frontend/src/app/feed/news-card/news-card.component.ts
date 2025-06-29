@@ -30,7 +30,7 @@ export class NewsCardComponent {
 
   this.loadingSummary = true;
   this.http
-    .post('http://localhost:8080/api/ai/summarize', textToSend, { responseType: 'text' })
+    .post('https://personalized-news-app.onrender.com/api/ai/summarize', textToSend, { responseType: 'text' })
     .subscribe({
       next: (summary) => {
         this.summarizedText = summary;
