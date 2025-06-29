@@ -37,6 +37,7 @@ public class NewsApiService {
                     .uri(newsApiUrl)
                     .retrieve()
                     .toEntity(String.class); // Get the JSON string
+            System.out.println(response.getBody());
 
             if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
                 return response.getBody();
