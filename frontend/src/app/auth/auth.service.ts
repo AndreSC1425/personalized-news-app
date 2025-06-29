@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private loginUrl = 'http://localhost:8080/api/auth/login'; // change if needed
+  private loginUrl = 'https://personalized-news-app.onrender.com/api/auth/login'; // change if needed
 
   constructor(private http: HttpClient, private router: Router) {}
 
