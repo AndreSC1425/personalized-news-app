@@ -32,7 +32,7 @@ export class AuthService {
 
   register(email: string, password: string) {
 return this.http.post(
-'http://localhost:8080/api/auth/register',
+'https://personalized-news-app.onrender.com/api/auth/register',
 { email, password },
 { responseType: 'text' }
 );
