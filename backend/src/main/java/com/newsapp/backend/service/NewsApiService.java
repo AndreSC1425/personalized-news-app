@@ -30,7 +30,7 @@ public class NewsApiService {
                 .queryParam("token", newsApiConfig.getApiKey());
 
         String newsApiUrl = uriBuilder.toUriString();
-        System.err.println(newsApiUrl)
+        System.err.println(newsApiUrl);
 
         try {
             // Use RestClient to make the HTTP call
