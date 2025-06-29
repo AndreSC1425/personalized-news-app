@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "https://personalized-news-o1rrtvjou-andresc1425s-projects.vercel.app", allowCredentials = "true")
+@CrossOrigin(origins = "https://personalized-news-ej34qck3b-andresc1425s-projects.vercel.app", allowCredentials = "true")
 @RestController
 @RequestMapping("/api/bookmarks")
 public class BookmarkController {
