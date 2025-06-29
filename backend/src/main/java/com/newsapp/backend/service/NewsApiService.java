@@ -19,16 +19,15 @@ public class NewsApiService {
     }
 
     /**
-     * Fetches news from NewsAPI.org.
+     * Fetches news from gnews.io.
      * This method is called by NewsController.
      */
     public String getNewsFromExternalApi(String query) {
-        // Construct the URL for NewsAPI
-        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromUriString(newsApiConfig.getBaseUrl() + "/everything")
+        // Construct the URL for Gnews API
+        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromUriString(newsApiConfig.getBaseUrl() + "/search")
                 .queryParam("q", query)
-                .queryParam("apiKey", newsApiConfig.getApiKey())
-                .queryParam("language", "en")
-                .queryParam("sortBy", "publishedAt");
+                .queryParam("lang", "en") // GNews uses 'lang' not 'language'
+                .queryParam("token", newsApiConfig.getApiKey());
 
         String newsApiUrl = uriBuilder.toUriString();
 
@@ -43,11 +42,11 @@ public class NewsApiService {
                 return response.getBody();
             } else {
                 System.err.println("NewsAPI returned non-successful status: " + response.getStatusCode() + " Body: " + response.getBody());
-                throw new RuntimeException("Failed to fetch news from external API with status: " + response.getStatusCode());
+                throw new RuntimeException("Failed to fetch news from GNews API with status: " + response.getStatusCode());
             }
         } catch (Exception e) {
-            System.err.println("Error calling NewsAPI: " + e.getMessage());
-            throw new RuntimeException("Error communicating with external NewsAPI.", e);
+            System.err.println("Error calling GNews API: " + e.getMessage());
+            throw new RuntimeException("Error communicating with GNews API.", e);
         }
     }
 }
