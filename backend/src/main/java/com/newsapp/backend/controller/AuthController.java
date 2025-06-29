@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "https://personalized-news-ej34qck3b-andresc1425s-projects.vercel.app", allowCredentials = "true")
+@CrossOrigin(origins = "https://personalized-news-app-peach.vercel.app", allowCredentials = "true")
 public class AuthController {
 
     private final AuthService authService;
