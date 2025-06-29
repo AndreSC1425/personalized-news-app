@@ -16,8 +16,9 @@ interface NewsApiResponse {
 
 @Injectable({ providedIn: 'root' })
 export class NewsService {
-  private apiKey = '5e1d4fd9df264397bedf4b8cbeb5a73b'; 
-  private baseUrl = 'https://newsapi.org/v2/everything';
+  // private apiKey = '5e1d4fd9df264397bedf4b8cbeb5a73b'; 
+  // private baseUrl = 'https://newsapi.org/v2/everything';
+  private backendApiUrl = 'https://personalized-news-app.onrender.com';
 
   constructor(private http: HttpClient) {}
 
@@ -27,7 +28,7 @@ export class NewsService {
    */
   getNews(topics: string[]): Observable<NewsApiResponse> {
     const query = topics.join(' OR ');
-    const url = `${this.baseUrl}?q=${encodeURIComponent(query)}&apiKey=${this.apiKey}`;
+    const url = `${this.backendApiUrl}/api/news/fetch?topics=${encodeURIComponent(query)}`;
     return this.http.get<NewsApiResponse>(url);
   }
 }
