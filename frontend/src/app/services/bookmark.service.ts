@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class BookmarkService {
-  private apiUrl = 'http://localhost:8080/api/bookmarks';
+  private apiUrl = 'https://personalized-news-app.onrender.com/api/bookmarks';
 
   constructor(private http: HttpClient) { }
 
